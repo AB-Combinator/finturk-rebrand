@@ -52,8 +52,12 @@ const cards = [
 
 export function ParadigmShift() {
   return (
-    <section className="py-20 sm:py-28 bg-surface">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="relative py-20 sm:py-28 bg-surface overflow-hidden">
+      {/* Background orbs */}
+      <div className="absolute top-10 right-[10%] w-80 h-80 rounded-full bg-primary/[0.04] blur-3xl animate-orb-slow pointer-events-none" />
+      <div className="absolute bottom-10 left-[5%] w-64 h-64 rounded-full bg-primary/[0.03] blur-3xl animate-orb pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection>
           <div className="text-center mb-14">
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
@@ -66,19 +70,50 @@ export function ParadigmShift() {
           </div>
         </AnimatedSection>
 
+        {/* Connecting arrows between cards (desktop) */}
+        <div className="hidden md:flex absolute top-[58%] left-[calc(33.33%+0.5rem)] z-10">
+          <motion.div
+            animate={{ x: [0, 6, 0], opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="text-primary text-lg">&rarr;</span>
+          </motion.div>
+        </div>
+        <div className="hidden md:flex absolute top-[58%] right-[calc(33.33%+0.5rem)] z-10">
+          <motion.div
+            animate={{ x: [0, 6, 0], opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2, delay: 0.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <span className="text-primary text-lg">&rarr;</span>
+          </motion.div>
+        </div>
+
         <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {cards.map((card) => (
+          {cards.map((card, i) => (
             <StaggerItem key={card.title}>
               <motion.div
-                whileHover={{ scale: 1.03, y: -4 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                animate={{ y: [0, -6, 0] }}
+                transition={{
+                  duration: 4,
+                  delay: i * 0.6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                whileHover={{ scale: 1.03 }}
                 className={`rounded-xl border p-6 h-full transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.12)] ${card.accent}`}
               >
-                <div
+                <motion.div
+                  animate={{ scale: [1, 1.12, 1] }}
+                  transition={{
+                    duration: 3,
+                    delay: i * 0.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
                   className={`h-10 w-10 rounded-lg ${card.iconBg} flex items-center justify-center mb-4`}
                 >
                   <card.icon className={`h-5 w-5 ${card.iconColor}`} />
-                </div>
+                </motion.div>
                 <h3 className="text-lg font-semibold text-foreground mb-4">
                   {card.title}
                 </h3>

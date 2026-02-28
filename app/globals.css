@@ -129,6 +129,40 @@ body {
   animation: gradient-shift 8s ease-in-out infinite;
 }
 
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes ring-pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.animate-ring-pulse {
+  animation: ring-pulse 2.5s ease-out infinite;
+}
+
+@keyframes travel-right {
+  0% { left: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+.animate-travel-dot {
+  animation: travel-right 2.5s linear infinite;
+}
+
+@keyframes icon-breathe {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+.animate-icon-breathe {
+  animation: icon-breathe 3s ease-in-out infinite;
+}
+
 .grid-bg {
   background-image:
     linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),

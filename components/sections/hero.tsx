@@ -92,9 +92,16 @@ export function Hero() {
                 Your Existing Stack
               </span>
               <div className="flex flex-col gap-2">
-                {existingStack.map((item) => (
+                {existingStack.map((item, i) => (
                   <motion.div
                     key={item.label}
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{
+                      duration: 3.5,
+                      delay: i * 0.4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-3 px-4 py-2.5 rounded-lg border border-border bg-card shadow-sm transition-colors hover:border-primary/20"
                   >
@@ -107,11 +114,10 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Connecting line with animated dots */}
+            {/* Connecting line with traveling dot */}
             <div className="hidden md:flex items-center gap-0">
-              <div className="relative w-16 h-px bg-border">
-                <div className="absolute top-1/2 left-0 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-dot-pulse" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-dot-pulse" style={{ animationDelay: "0.3s" }} />
+              <div className="relative w-20 h-px bg-border">
+                <div className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_6px_rgba(59,130,246,0.6)] animate-travel-dot" />
               </div>
               <ArrowRight className="h-4 w-4 text-primary" />
             </div>
@@ -121,21 +127,24 @@ export function Hero() {
 
             {/* Finturk Center */}
             <div className="flex flex-col items-center gap-2">
-              <div className="relative px-8 pt-8 pb-5 rounded-xl border-2 border-primary/30 bg-primary/5 animate-pulse-glow">
+              <motion.div
+                animate={{ scale: [1, 1.02, 1] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="relative px-8 pt-8 pb-5 rounded-xl border-2 border-primary/30 bg-primary/5 animate-pulse-glow"
+              >
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full whitespace-nowrap">
                   AI Operations Layer
                 </div>
                 <span className="text-xl font-bold text-foreground">
                   Finturk
                 </span>
-              </div>
+              </motion.div>
             </div>
 
-            {/* Connecting line with animated dots */}
+            {/* Connecting line with traveling dot */}
             <div className="hidden md:flex items-center gap-0">
-              <div className="relative w-16 h-px bg-border">
-                <div className="absolute top-1/2 left-0 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-dot-pulse" style={{ animationDelay: "0.6s" }} />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-dot-pulse" style={{ animationDelay: "0.9s" }} />
+              <div className="relative w-20 h-px bg-border">
+                <div className="absolute top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_6px_rgba(59,130,246,0.6)] animate-travel-dot" style={{ animationDelay: "1.2s" }} />
               </div>
               <ArrowRight className="h-4 w-4 text-primary" />
             </div>
@@ -149,9 +158,16 @@ export function Hero() {
                 Outcomes
               </span>
               <div className="flex flex-col gap-2">
-                {outcomes.map((item) => (
+                {outcomes.map((item, i) => (
                   <motion.div
                     key={item.label}
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{
+                      duration: 3.5,
+                      delay: i * 0.4 + 0.2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
                     whileHover={{ scale: 1.05 }}
                     className="flex items-center gap-3 px-4 py-2.5 rounded-lg border border-primary/20 bg-primary/5 transition-colors hover:border-primary/40"
                   >
@@ -176,14 +192,21 @@ export function Hero() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-5">
           <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
-            {trustItems.map((item) => (
-              <div
+            {trustItems.map((item, i) => (
+              <motion.div
                 key={item.label}
+                animate={{ y: [0, -3, 0] }}
+                transition={{
+                  duration: 3,
+                  delay: i * 0.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
                 className="flex items-center gap-2 text-sm text-muted-foreground"
               >
                 <item.icon className="h-4 w-4" />
                 <span>{item.label}</span>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
