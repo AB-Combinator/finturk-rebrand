@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Plug, Eye, Maximize2 } from "lucide-react";
 import {
   AnimatedSection,
@@ -33,7 +34,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 sm:py-28 bg-white">
+    <section id="how-it-works" className="py-20 sm:py-28 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection>
           <div className="text-center mb-14">
@@ -48,16 +49,25 @@ export function HowItWorks() {
         </AnimatedSection>
 
         <StaggerChildren className="relative grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Connecting line (desktop only) */}
-          <div className="hidden md:block absolute top-16 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-border z-0" />
+          {/* Connecting line with animated dots (desktop only) */}
+          <div className="hidden md:block absolute top-16 left-[calc(16.67%+1rem)] right-[calc(16.67%+1rem)] h-px bg-border z-0">
+            <div className="absolute top-1/2 left-[20%] -translate-y-1/2 w-2 h-2 rounded-full bg-primary animate-dot-pulse" />
+            <div className="absolute top-1/2 left-[40%] -translate-y-1/2 w-2 h-2 rounded-full bg-primary animate-dot-pulse" style={{ animationDelay: "0.4s" }} />
+            <div className="absolute top-1/2 left-[60%] -translate-y-1/2 w-2 h-2 rounded-full bg-primary animate-dot-pulse" style={{ animationDelay: "0.8s" }} />
+            <div className="absolute top-1/2 left-[80%] -translate-y-1/2 w-2 h-2 rounded-full bg-primary animate-dot-pulse" style={{ animationDelay: "1.2s" }} />
+          </div>
 
-          {steps.map((step, i) => (
+          {steps.map((step) => (
             <StaggerItem key={step.title}>
               <div className="relative text-center">
                 {/* Step number */}
-                <div className="relative z-10 mx-auto mb-4 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="relative z-10 mx-auto mb-4 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center"
+                >
                   <step.icon className="h-5 w-5 text-primary" />
-                </div>
+                </motion.div>
 
                 {/* Badge */}
                 <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-3">

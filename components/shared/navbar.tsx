@@ -31,7 +31,7 @@ export function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-border/50 shadow-sm"
+          ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -73,7 +73,7 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-white border-b border-border px-4 pb-4 space-y-3">
+        <div className="md:hidden bg-background border-b border-border px-4 pb-4 space-y-3">
           {navLinks.map((link) => (
             <button
               key={link.href}

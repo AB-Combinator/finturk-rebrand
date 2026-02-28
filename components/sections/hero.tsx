@@ -40,8 +40,13 @@ export function Hero() {
   };
 
   return (
-    <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-20 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section className="relative pt-24 pb-16 sm:pt-32 sm:pb-20 overflow-hidden grid-bg">
+      {/* Floating gradient orbs */}
+      <div className="absolute top-20 left-[10%] w-72 h-72 rounded-full bg-primary/[0.07] blur-3xl animate-orb pointer-events-none" />
+      <div className="absolute top-40 right-[5%] w-96 h-96 rounded-full bg-primary/[0.05] blur-3xl animate-orb-slow pointer-events-none" />
+      <div className="absolute bottom-10 left-[30%] w-64 h-64 rounded-full bg-primary/[0.04] blur-3xl animate-orb-slower pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           animate={{ opacity: 1, y: 0 }}
@@ -88,23 +93,27 @@ export function Hero() {
               </span>
               <div className="flex flex-col gap-2">
                 {existingStack.map((item) => (
-                  <div
+                  <motion.div
                     key={item.label}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg border border-border bg-white shadow-sm"
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg border border-border bg-card shadow-sm transition-colors hover:border-primary/20"
                   >
                     <item.icon className="h-4 w-4 text-muted-foreground" />
                     <span className="text-sm font-medium text-foreground">
                       {item.label}
                     </span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Arrows */}
-            <div className="hidden md:flex items-center text-border">
-              <div className="w-12 h-px bg-border" />
-              <ArrowRight className="h-4 w-4 text-muted-foreground" />
+            {/* Connecting line with animated dots */}
+            <div className="hidden md:flex items-center gap-0">
+              <div className="relative w-16 h-px bg-border">
+                <div className="absolute top-1/2 left-0 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-dot-pulse" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-dot-pulse" style={{ animationDelay: "0.3s" }} />
+              </div>
+              <ArrowRight className="h-4 w-4 text-primary" />
             </div>
             <div className="md:hidden">
               <ArrowRight className="h-5 w-5 text-muted-foreground rotate-90" />
@@ -112,7 +121,7 @@ export function Hero() {
 
             {/* Finturk Center */}
             <div className="flex flex-col items-center gap-2">
-              <div className="relative px-8 py-6 rounded-xl border-2 border-primary/30 bg-primary/5 glow-blue">
+              <div className="relative px-8 py-6 rounded-xl border-2 border-primary/30 bg-primary/5 animate-pulse-glow">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-primary text-primary-foreground text-xs font-medium rounded-full">
                   AI Operations Layer
                 </div>
@@ -122,10 +131,13 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Arrows */}
-            <div className="hidden md:flex items-center text-border">
-              <div className="w-12 h-px bg-border" />
-              <ArrowRight className="h-4 w-4 text-muted-foreground" />
+            {/* Connecting line with animated dots */}
+            <div className="hidden md:flex items-center gap-0">
+              <div className="relative w-16 h-px bg-border">
+                <div className="absolute top-1/2 left-0 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-dot-pulse" style={{ animationDelay: "0.6s" }} />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary animate-dot-pulse" style={{ animationDelay: "0.9s" }} />
+              </div>
+              <ArrowRight className="h-4 w-4 text-primary" />
             </div>
             <div className="md:hidden">
               <ArrowRight className="h-5 w-5 text-muted-foreground rotate-90" />
@@ -138,15 +150,16 @@ export function Hero() {
               </span>
               <div className="flex flex-col gap-2">
                 {outcomes.map((item) => (
-                  <div
+                  <motion.div
                     key={item.label}
-                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg border border-primary/20 bg-primary/5"
+                    whileHover={{ scale: 1.05 }}
+                    className="flex items-center gap-3 px-4 py-2.5 rounded-lg border border-primary/20 bg-primary/5 transition-colors hover:border-primary/40"
                   >
                     <item.icon className="h-4 w-4 text-primary" />
                     <span className="text-sm font-medium text-foreground">
                       {item.label}
                     </span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

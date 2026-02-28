@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   Database,
   BarChart3,
@@ -53,7 +54,7 @@ const integrationRows = [
 
 export function Integrations() {
   return (
-    <section id="integrations" className="py-20 sm:py-28 bg-white">
+    <section id="integrations" className="py-20 sm:py-28 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection>
           <div className="text-center mb-14">
@@ -64,19 +65,29 @@ export function Integrations() {
         </AnimatedSection>
 
         <div className="space-y-8">
-          {integrationRows.map((row) => (
+          {integrationRows.map((row, rowIndex) => (
             <StaggerChildren
               key={row.label}
               className="flex flex-wrap items-center justify-center gap-3"
             >
-              {row.items.map((item) => (
+              {row.items.map((item, i) => (
                 <StaggerItem key={item.name}>
-                  <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-border bg-white hover:border-primary/30 hover:bg-primary/[0.02] transition-colors">
+                  <motion.div
+                    animate={{ y: [0, -4, 0] }}
+                    transition={{
+                      duration: 3,
+                      delay: (rowIndex * 4 + i) * 0.3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    whileHover={{ scale: 1.08 }}
+                    className="flex items-center gap-2.5 px-4 py-2.5 rounded-lg border border-border bg-card hover:border-primary/30 hover:bg-primary/[0.05] transition-all duration-300"
+                  >
                     <item.icon className="h-4 w-4 text-muted-foreground" />
                     <span className="text-sm font-medium text-foreground">
                       {item.name}
                     </span>
-                  </div>
+                  </motion.div>
                 </StaggerItem>
               ))}
             </StaggerChildren>
@@ -85,12 +96,16 @@ export function Integrations() {
           {/* Open API badge */}
           <StaggerChildren className="flex justify-center">
             <StaggerItem>
-              <div className="flex items-center gap-2.5 px-5 py-3 rounded-lg border-2 border-dashed border-primary/30 bg-primary/5">
+              <motion.div
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 3, delay: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="flex items-center gap-2.5 px-5 py-3 rounded-lg border-2 border-dashed border-primary/30 bg-primary/5"
+              >
                 <Code className="h-4 w-4 text-primary" />
                 <span className="text-sm font-semibold text-primary">
                   Open API
                 </span>
-              </div>
+              </motion.div>
             </StaggerItem>
           </StaggerChildren>
         </div>

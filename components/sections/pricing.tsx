@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -59,7 +60,7 @@ const plans = [
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-20 sm:py-28 bg-white">
+    <section id="pricing" className="py-20 sm:py-28 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <AnimatedSection>
           <div className="text-center mb-4">
@@ -75,11 +76,13 @@ export function Pricing() {
         <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {plans.map((plan) => (
             <StaggerItem key={plan.name}>
-              <div
-                className={`relative rounded-xl border p-6 h-full flex flex-col ${
+              <motion.div
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className={`relative rounded-xl border p-6 h-full flex flex-col transition-shadow duration-300 ${
                   plan.highlighted
-                    ? "border-primary shadow-lg shadow-primary/10 bg-white"
-                    : "border-border bg-white"
+                    ? "border-primary shadow-lg shadow-primary/10 bg-card hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]"
+                    : "border-border bg-card hover:shadow-[0_0_30px_rgba(59,130,246,0.1)]"
                 }`}
               >
                 {plan.badge && (
@@ -117,7 +120,7 @@ export function Pricing() {
                 <Button variant={plan.ctaVariant} className="w-full">
                   {plan.cta}
                 </Button>
-              </div>
+              </motion.div>
             </StaggerItem>
           ))}
         </StaggerChildren>

@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { FileText, Sparkles, Zap } from "lucide-react";
 import {
   AnimatedSection,
@@ -11,7 +12,7 @@ const cards = [
   {
     icon: FileText,
     title: "The Old Way",
-    accent: "border-border bg-white",
+    accent: "border-border bg-card",
     iconBg: "bg-muted",
     iconColor: "text-muted-foreground",
     items: [
@@ -68,8 +69,10 @@ export function ParadigmShift() {
         <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {cards.map((card) => (
             <StaggerItem key={card.title}>
-              <div
-                className={`rounded-xl border p-6 h-full ${card.accent}`}
+              <motion.div
+                whileHover={{ scale: 1.03, y: -4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className={`rounded-xl border p-6 h-full transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.12)] ${card.accent}`}
               >
                 <div
                   className={`h-10 w-10 rounded-lg ${card.iconBg} flex items-center justify-center mb-4`}
@@ -89,7 +92,7 @@ export function ParadigmShift() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             </StaggerItem>
           ))}
         </StaggerChildren>

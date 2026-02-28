@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { CalendarCheck, DollarSign, ShieldCheck, ArrowRight } from "lucide-react";
 import {
   AnimatedSection,
@@ -56,7 +57,11 @@ export function Workflows() {
         <StaggerChildren className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {workflows.map((wf) => (
             <StaggerItem key={wf.title}>
-              <div className="rounded-xl border border-border bg-white h-full flex flex-col overflow-hidden">
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="rounded-xl border border-border bg-card h-full flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]"
+              >
                 {/* Header */}
                 <div className="p-6 pb-4">
                   <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
@@ -82,7 +87,12 @@ export function Workflows() {
 
                     {/* Arrow */}
                     <div className="flex items-center pt-6">
-                      <ArrowRight className="h-4 w-4 text-primary" />
+                      <motion.div
+                        animate={{ x: [0, 4, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <ArrowRight className="h-4 w-4 text-primary" />
+                      </motion.div>
                     </div>
 
                     {/* After */}
@@ -103,7 +113,7 @@ export function Workflows() {
                     {wf.metric}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </StaggerItem>
           ))}
         </StaggerChildren>

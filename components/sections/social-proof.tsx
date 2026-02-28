@@ -44,8 +44,11 @@ export function SocialProof() {
 
         {/* Hero testimonial - Chicago Partners */}
         <AnimatedSection>
-          <div className="rounded-xl border border-primary/20 bg-white p-8 sm:p-10 mb-8">
-            <div className="flex flex-col sm:flex-row sm:items-start gap-6">
+          <div className="relative rounded-xl border border-primary/20 bg-card p-8 sm:p-10 mb-8 overflow-hidden">
+            {/* Shimmer effect */}
+            <div className="absolute inset-0 animate-shimmer pointer-events-none" />
+
+            <div className="relative flex flex-col sm:flex-row sm:items-start gap-6">
               <Quote className="h-8 w-8 text-primary/30 shrink-0" />
               <div>
                 <p className="text-lg sm:text-xl text-foreground leading-relaxed mb-6">
@@ -84,7 +87,7 @@ export function SocialProof() {
         <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((t) => (
             <StaggerItem key={t.name}>
-              <div className="rounded-xl border border-border bg-white p-6 h-full flex flex-col">
+              <div className="rounded-xl border border-border bg-card p-6 h-full flex flex-col">
                 <Quote className="h-5 w-5 text-primary/20 mb-3" />
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">
                   &ldquo;{t.quote}&rdquo;
