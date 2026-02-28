@@ -8,22 +8,26 @@ import { Integrations } from "@/components/sections/integrations";
 import { SocialProof } from "@/components/sections/social-proof";
 import { Pricing } from "@/components/sections/pricing";
 import { CTA } from "@/components/sections/cta";
+import { MatrixBackground } from "@/components/shared/matrix-background";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <main>
-        <Hero />
-        <ParadigmShift />
-        <HowItWorks />
-        <Workflows />
-        <Integrations />
-        <SocialProof />
-        <Pricing />
-        <CTA />
-      </main>
-      <Footer />
+      <MatrixBackground />
+      <div className="relative z-10">
+        <Navbar />
+        <main>
+          <Hero />
+          <ParadigmShift />
+          <HowItWorks />
+          <Workflows />
+          <Integrations />
+          <SocialProof />
+          <Pricing />
+          <CTA />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

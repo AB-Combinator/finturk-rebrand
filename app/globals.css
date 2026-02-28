@@ -163,6 +163,10 @@ body {
   animation: icon-breathe 3s ease-in-out infinite;
 }
 
+/* Semi-transparent section backgrounds so matrix rain bleeds through */
+.bg-background { background-color: rgba(10, 15, 26, 0.85) !important; }
+.bg-surface { background-color: rgba(15, 22, 41, 0.82) !important; }
+
 .grid-bg {
   background-image:
     linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
