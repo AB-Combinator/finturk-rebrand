@@ -121,8 +121,8 @@ export function Hero() {
 
             {/* Finturk Center */}
             <div className="flex flex-col items-center gap-2">
-              <div className="relative px-8 py-6 rounded-xl border-2 border-primary/30 bg-primary/5 animate-pulse-glow">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 bg-primary text-primary-foreground text-xs font-medium rounded-full">
+              <div className="relative px-8 pt-8 pb-5 rounded-xl border-2 border-primary/30 bg-primary/5 animate-pulse-glow">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full whitespace-nowrap">
                   AI Operations Layer
                 </div>
                 <span className="text-xl font-bold text-foreground">
