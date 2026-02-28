@@ -7,6 +7,7 @@ import { Workflows } from "@/components/sections/workflows";
 import { Integrations } from "@/components/sections/integrations";
 import { SocialProof } from "@/components/sections/social-proof";
 import { Pricing } from "@/components/sections/pricing";
+import { CTA } from "@/components/sections/cta";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <Integrations />
         <SocialProof />
         <Pricing />
+        <CTA />
       </main>
       <Footer />
     </>
